@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Aarya ✨</title>
+<title>Happy Birthday Aarya 🤍</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(180deg,#fff6fa,#ffffff);
+  background:linear-gradient(180deg,#fff5fa,#ffffff);
   overflow:hidden;
 }
 
@@ -21,7 +21,6 @@ body{
   min-height:100vh;
   padding:60px 25px;
   text-align:center;
-  animation:fade .8s ease;
 }
 
 .slide.active{
@@ -30,20 +29,12 @@ body{
   justify-content:center;
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(25px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
 h1,h2{
   font-family:'Playfair Display',serif;
   color:#b87c8d;
 }
 
-p{
-  color:#555;
-  line-height:1.8;
-}
+p{color:#555;line-height:1.8;}
 
 .card{
   background:#fff;
@@ -52,7 +43,7 @@ p{
   box-shadow:0 15px 30px rgba(0,0,0,.06);
 }
 
-/* Navigation */
+/* NAVIGATION */
 .nav{
   margin-top:30px;
   display:flex;
@@ -63,44 +54,35 @@ p{
   background:#f1b8c8;
   color:#fff;
   border:none;
-  padding:12px 24px;
+  padding:12px 26px;
   border-radius:30px;
   font-size:.95rem;
 }
 
-.btn.secondary{background:#e8cfd7;}
+.btn.back{
+  background:#e6cfd6;
+}
 
-/* Message highlight */
+/* MESSAGE */
 .message{
   background:linear-gradient(180deg,#fff0f6,#ffffff);
   border:2px dashed #f1b8c8;
 }
 
-/* Cake */
-.cake-wrap{
-  margin-bottom:15px;
-}
-
+/* CAKE */
 .candles{
   font-size:28px;
   letter-spacing:6px;
   animation:flicker 1.2s infinite;
 }
-
 @keyframes flicker{50%{opacity:.6;}}
 
 .cake{font-size:90px;margin:10px 0;}
 
-.blow-btn{
-  margin-top:15px;
-}
-
-/* Cute 21 */
 .big21{
   font-size:90px;
-  font-weight:bold;
-  color:#c88ea7;
   font-family:'Comic Sans MS','Playfair Display',serif;
+  color:#c88ea7;
   opacity:0;
   transform:translateY(-80px);
   transition:all 2s ease;
@@ -111,16 +93,29 @@ p{
   transform:translateY(0);
 }
 
-/* Hearts */
-.heart{
+/* FLOATING EFFECTS */
+.sparkle, .butterfly{
   position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:float 6s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes float{
+.sparkle{
+  bottom:-20px;
+  animation:sparkleUp 7s linear infinite;
+}
+
+@keyframes sparkleUp{
   to{transform:translateY(-110vh);opacity:0;}
+}
+
+.butterfly{
+  top:20%;
+  animation:flyAcross 12s linear infinite;
+}
+
+@keyframes flyAcross{
+  from{left:-10%;opacity:0;}
+  to{left:110%;opacity:1;}
 }
 </style>
 </head>
@@ -149,12 +144,12 @@ p{
     </strong></p>
   </div>
   <div class="nav">
-    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn back" onclick="back()">⬅️ Back</button>
     <button class="btn" onclick="next()">Next ➡️</button>
   </div>
 </div>
 
-<!-- SLIDE 3 – Namjoon -->
+<!-- SLIDE 3 -->
 <div class="slide">
   <div class="card">
     <h2>💜 BTS Comfort</h2>
@@ -166,24 +161,24 @@ p{
     </p>
   </div>
   <div class="nav">
-    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn back" onclick="back()">⬅️ Back</button>
     <button class="btn" onclick="next()">Next ➡️</button>
   </div>
 </div>
 
-<!-- SLIDE 4 – Cake -->
+<!-- SLIDE 4 – CAKE -->
 <div class="slide">
-  <div class="cake-wrap">
+  <div>
     <div class="candles" id="candles">🕯️ 🕯️ 🕯️</div>
     <div class="cake">🎂</div>
     <div class="big21" id="big21">21</div>
   </div>
 
-  <button class="btn blow-btn" id="blowBtn" onclick="blow()">Tap to blow candles 💨</button>
+  <button class="btn" id="blowBtn" onclick="blow()">Tap to blow candles 💨</button>
 
   <div class="nav">
-    <button class="btn secondary" onclick="back()">⬅️ Back</button>
-    <button class="btn" id="afterCakeNext" onclick="next()" style="visibility:hidden;">Next ➡️</button>
+    <button class="btn back" onclick="back()">⬅️ Back</button>
+    <button class="btn" id="cakeNext" onclick="next()" style="display:none;">Next ➡️</button>
   </div>
 </div>
 
@@ -194,59 +189,74 @@ p{
     <p>
       There’s a surprise waiting for you<br>
       <strong>after your exams</strong> ✨<br><br>
-      Until then —<br>
-      take care and keep smiling 🌷
+      Until then — take care and keep smiling 🌷
     </p>
   </div>
   <div class="nav">
-    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn back" onclick="back()">⬅️ Back</button>
     <button class="btn" onclick="next()">Next ➡️</button>
   </div>
 </div>
 
-<!-- SLIDE 6 -->
+<!-- SLIDE 6 – FINAL -->
 <div class="slide">
   <div class="card">
-    <h2>🤍</h2>
     <p style="font-size:1.05rem;">
       Lots of love,<br>
       <strong>Pranav</strong> 🤍<br><br>
       Hope it made you smile 🌻
     </p>
   </div>
+  <!-- ✅ BACK BUTTON CLEARLY PRESENT -->
+  <div class="nav">
+    <button class="btn back" onclick="back()">⬅️ Rewind</button>
+    <span></span>
+  </div>
 </div>
 
 <script>
-let i=0;
+let index=0;
 const slides=document.querySelectorAll('.slide');
 
 function show(){
   slides.forEach(s=>s.classList.remove('active'));
-  slides[i].classList.add('active');
+  slides[index].classList.add('active');
 }
 
-function next(){ if(i<slides.length-1){i++;show();}}
-function back(){ if(i>0){i--;show();}}
+function next(){
+  if(index < slides.length-1){ index++; show(); }
+}
+
+function back(){
+  if(index > 0){ index--; show(); }
+}
 
 function blow(){
   document.getElementById('candles').style.opacity='0';
   document.getElementById('big21').classList.add('show');
   document.getElementById('blowBtn').style.display='none';
-
-  setTimeout(()=>{
-    document.getElementById('afterCakeNext').style.visibility='visible';
-  },2000);
+  setTimeout(()=>document.getElementById('cakeNext').style.display='inline-block',2000);
 }
 
-/* hearts */
+/* sparkles */
 setInterval(()=>{
-  const h=document.createElement('div');
-  h.className='heart';
-  h.innerHTML='🤍';
-  h.style.left=Math.random()*100+'vw';
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},900);
+  const s=document.createElement('div');
+  s.className='sparkle';
+  s.innerHTML='✨';
+  s.style.left=Math.random()*100+'vw';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),7000);
+},800);
+
+/* butterflies */
+setInterval(()=>{
+  const b=document.createElement('div');
+  b.className='butterfly';
+  b.innerHTML='🦋';
+  b.style.top=Math.random()*60+'%';
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),12000);
+},5000);
 </script>
 
 </body>
