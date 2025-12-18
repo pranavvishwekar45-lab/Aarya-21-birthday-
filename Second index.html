@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Aarya ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(180deg,#fff6fa,#ffffff);
+  overflow:hidden;
+}
+
+.slide{
+  display:none;
+  min-height:100vh;
+  padding:60px 25px;
+  text-align:center;
+  animation:fade .8s ease;
+}
+
+.slide.active{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(25px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+  color:#b87c8d;
+}
+
+p{color:#555;line-height:1.8;}
+
+.card{
+  background:#fff;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 15px 30px rgba(0,0,0,.06);
+}
+
+/* Navigation */
+.nav{
+  margin-top:30px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.btn{
+  background:#f1b8c8;
+  color:#fff;
+  border:none;
+  padding:12px 24px;
+  border-radius:30px;
+  font-size:.95rem;
+}
+
+.btn.secondary{background:#e8cfd7;}
+
+/* Highlight message */
+.message{
+  background:linear-gradient(180deg,#fff0f6,#ffffff);
+  border:2px dashed #f1b8c8;
+}
+
+/* Cake */
+.candles{font-size:28px;letter-spacing:6px;animation:flicker 1.2s infinite;}
+@keyframes flicker{50%{opacity:.6;}}
+.cake{font-size:90px;margin:10px 0;}
+
+.big21{
+  font-size:90px;
+  font-weight:bold;
+  color:#c88ea7;
+  font-family:'Comic Sans MS','Playfair Display',serif;
+  opacity:0;
+  transform:translateY(-80px);
+  transition:all 2s ease;
+}
+.big21.show{opacity:1;transform:translateY(0);}
+
+/* Floating elements */
+.float{
+  position:fixed;
+  bottom:-20px;
+  animation:float 7s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  to{transform:translateY(-110vh);opacity:0;}
+}
+
+.butterfly{
+  position:fixed;
+  top:20%;
+  animation:fly 12s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes fly{
+  from{left:-10%;opacity:0;}
+  to{left:110%;opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- SLIDES -->
+
+<div class="slide active">
+  <span>21st Birthday ✨</span>
+  <h1>Happy Birthday<br>Aarya 🌻🤍</h1>
+  <p>Soft hearts deserve gentle celebrations</p>
+  <div class="nav">
+    <span></span>
+    <button class="btn" onclick="next()">Next ➡️</button>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card message">
+    <h2>💌 From Me To You</h2>
+    <p><strong>
+      Many Many Happy returns of the day to the most beautiful kind woman.<br><br>
+      Happy Birthday Aarya ✨🌻🤍<br><br>
+      Let’s celebrate this together!! 🥳🥂
+    </strong></p>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn" onclick="next()">Next ➡️</button>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <h2>💜 BTS Comfort</h2>
+    <p>
+      Just like <strong>Namjoon</strong> — calm, thoughtful,
+      soft yet strong 🤍<br><br>
+      A presence that feels like home.
+    </p>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn" onclick="next()">Next ➡️</button>
+  </div>
+</div>
+
+<div class="slide">
+  <div>
+    <div class="candles" id="candles">🕯️ 🕯️ 🕯️</div>
+    <div class="cake">🎂</div>
+    <div class="big21" id="big21">21</div>
+  </div>
+  <button class="btn" id="blowBtn" onclick="blow()">Tap to blow candles 💨</button>
+  <div class="nav">
+    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn" id="afterCakeNext" onclick="next()" style="visibility:hidden;">Next ➡️</button>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <h2>🤍 One Last Thing</h2>
+    <p>
+      There’s a surprise waiting for you<br>
+      <strong>after your exams</strong> ✨<br><br>
+      Until then — take care and keep smiling 🌷
+    </p>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="back()">⬅️ Back</button>
+    <button class="btn" onclick="next()">Next ➡️</button>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="card">
+    <p style="font-size:1.05rem;">
+      Lots of love,<br>
+      <strong>Pranav</strong> 🤍<br><br>
+      Hope it made you smile 🌻
+    </p>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="back()">⬅️ Rewind</button>
+    <span></span>
+  </div>
+</div>
+
+<script>
+let i=0;
+const slides=document.querySelectorAll('.slide');
+function show(){slides.forEach(s=>s.classList.remove('active'));slides[i].classList.add('active');}
+function next(){if(i<slides.length-1){i++;show();}}
+function back(){if(i>0){i--;show();}}
+
+function blow(){
+  document.getElementById('candles').style.opacity='0';
+  document.getElementById('big21').classList.add('show');
+  document.getElementById('blowBtn').style.display='none';
+  setTimeout(()=>document.getElementById('afterCakeNext').style.visibility='visible',2000);
+}
+
+/* sparkles */
+setInterval(()=>{
+  const s=document.createElement('div');
+  s.className='float';
+  s.innerHTML='✨';
+  s.style.left=Math.random()*100+'vw';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),7000);
+},900);
+
+/* butterflies */
+setInterval(()=>{
+  const b=document.createElement('div');
+  b.className='butterfly';
+  b.innerHTML='🦋';
+  b.style.top=Math.random()*60+'%';
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),12000);
+},6000);
+</script>
+
+</body>
+</html>
